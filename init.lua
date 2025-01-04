@@ -8,23 +8,18 @@ Services = {
     --websites = "http://localhost/?subtopic=accountmanagement", --./client_entergame "Forgot password and/or email"
 }
 
---[[ Servers_init = {
-    ["http://ip/login.php"] = {
+Servers_init = {
+    ["https://198.27.76.222/login.php"] = {
         ["port"] = 80,
-        ["protocol"] = 1332,
+        ["protocol"] = 1340,
         ["httpLogin"] = true
     },
-    ["ip.net"] = {
-        ["port"] = 7171,
-        ["protocol"] = 860,
-        ["httpLogin"] = false
-    },
+   
+}
 
-} ]]
-
-g_app.setName("OTClient - Redemption");
-g_app.setCompactName("otclient");
-g_app.setOrganizationName("otcr");
+g_app.setName("Newstalgia");
+g_app.setCompactName("Newstalgia");
+g_app.setOrganizationName("Newstalgia");
 
 g_app.hasUpdater = function()
     return (Services.updater and Services.updater ~= "" and g_modules.getModule("updater"))
