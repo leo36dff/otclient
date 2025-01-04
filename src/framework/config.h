@@ -30,10 +30,10 @@
 
 // ENCRYPTION SYSTEM
 // Enable client encryption
-#define ENABLE_ENCRYPTION 0
+#define ENABLE_ENCRYPTION 1
 // Enable client encryption maker/builder.
 // You can compile it once and use this executable to only encrypt client files once with command --encrypt which will be using password below.
-#define ENABLE_ENCRYPTION_BUILDER 0
+#define ENABLE_ENCRYPTION_BUILDER 1
 // for security reasons make sure you are using password with at last 100+ characters
 #define ENCRYPTION_PASSWORD "SET_YOUR_PASSWORD_HERE"
 #define ENCRYPTION_HEADER "SET_YOUR_HEADER_HERE"
