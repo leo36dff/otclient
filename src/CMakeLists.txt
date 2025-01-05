@@ -6,14 +6,14 @@ project(otclient)
 # *****************************************************************************
 if(CMAKE_BASE_NAME STREQUAL "em++")
     set(WASM ON)
-		message(STATUS "WASM: ON") 
+		message(STATUS "WASM: ON")
 endif()
 
 option(TOGGLE_FRAMEWORK_GRAPHICS "Use Graphics " ON)
-option(TOGGLE_FRAMEWORK_SOUND "Use SOUND " OFF)
+option(TOGGLE_FRAMEWORK_SOUND "Use SOUND " ON) 
 option(TOGGLE_FRAMEWORK_XML "Use XML " ON)
 option(TOGGLE_FRAMEWORK_NET "Use NET " ON)
-option(TOGGLE_FRAMEWORK_EDITOR "Use Editor " OFF) 
+option(TOGGLE_FRAMEWORK_EDITOR "Use Editor " OFF)
 option(TOGGLE_DIRECTX "Use DX9 support" OFF)
 option(TOGGLE_BIN_FOLDER "Use build/bin folder for generate compilation files" OFF)
 option(TOGGLE_BOT_PROTECTION "Use bot protection" ON)
@@ -23,7 +23,7 @@ option(BUILD_STATIC_LIBRARY "Build using static libraries" OFF)
 option(TOGGLE_PRE_COMPILED_HEADER "Use precompiled header (speed up compile)" ON)
 option(SPEED_UP_BUILD_UNITY "Compile using build unity for speed up build" ON)
 
-# *****************************************************************************
+# ***************************************************************************** 
 # Cmake Features
 # *****************************************************************************
 set(GNUCXX_MINIMUM_VERSION 9)
