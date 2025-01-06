@@ -328,7 +328,7 @@ void ThingType::unserializeAppearance(const uint16_t clientId, const ThingCatego
         totalSpritesCount += totalSprites;
     }
 
-    prepareTextureLoad(sizes, total_sprites);
+    m_textureData.resize(m_animationPhases);
 }
 
 void ThingType::unserialize(const uint16_t clientId, const ThingCategory category, const FileStreamPtr& fin)
@@ -485,7 +485,6 @@ void ThingType::unserialize(const uint16_t clientId, const ThingCategory categor
         const uint8_t width = fin->getU8();
         const uint8_t height = fin->getU8();
         m_size = { width, height };
-        sizes.emplace_back(m_size);
         if (width > 1 || height > 1) {
             m_realSize = fin->getU8();
         }
@@ -512,14 +511,12 @@ void ThingType::unserialize(const uint16_t clientId, const ThingCategory categor
         }
 
         const int totalSprites = m_size.area() * m_layers * m_numPatternX * m_numPatternY * m_numPatternZ * groupAnimationsPhases;
-
         if (totalSpritesCount + totalSprites > 4096)
             throw Exception("a thing type has more than 4096 sprites");
 
         m_spritesIndex.resize(totalSpritesCount + totalSprites);
         for (int j = totalSpritesCount; j < (totalSpritesCount + totalSprites); ++j)
             m_spritesIndex[j] = g_game.getFeature(Otc::GameSpritesU32) ? fin->getU32() : fin->getU16();
-
     }
 
     m_textureData.resize(m_animationPhases);
@@ -668,9 +665,6 @@ void ThingType::loadTexture(const int animationPhase)
                         if (protobufSupported) {
                             const uint32_t spriteIndex = getSpriteIndex(-1, -1, spriteMask ? 1 : l, x, y, z, animationPhase);
                             const auto& spriteImage = g_sprites.getSpriteImage(m_spritesIndex[spriteIndex]);
-                            if (!spriteImage) {
-                                continue;
-                            }
 
                             // verifies that the first block in the lower right corner is transparent.
                             if (!spriteImage || spriteImage->hasTransparentPixel()) {
@@ -682,7 +676,7 @@ void ThingType::loadTexture(const int animationPhase)
                                     spriteImage->overwriteMask(maskColors[(l - 1)]);
                                 }
 
-                            auto spriteSize = spriteImage->getSize() / g_gameConfig.getSpriteSize();
+                                auto spriteSize = spriteImage->getSize() / g_gameConfig.getSpriteSize();
 
                                 const Point& spritePos = Point(m_size.width() - spriteSize.width(), m_size.height() - spriteSize.height()) * g_gameConfig.getSpriteSize();
                                 fullImage->blit(framePos + spritePos, spriteImage);
