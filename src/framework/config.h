@@ -33,7 +33,7 @@
 #define ENABLE_ENCRYPTION 1
 // Enable client encryption maker/builder.
 // You can compile it once and use this executable to only encrypt client files once with command --encrypt which will be using password below.
-#define ENABLE_ENCRYPTION_BUILDER 0 
+#define ENABLE_ENCRYPTION_BUILDER 1
 // for security reasons make sure you are using password with at last 100+ characters
 #define ENCRYPTION_PASSWORD "OIG8Cf+EvKSQYsUPcM4nV4_s870c__Zv0WbzD_BR!ik@T$a+4wmOnp0RS*eKxfioIlBds!ybqbjRPBZFod!Fw!jgXs6E@U70x$gH"
 #define ENCRYPTION_HEADER "SET_YOUR_HEADER_HERE"
